@@ -21,7 +21,7 @@ public class H2 implements Heuristica {
 		c = 0;
 		
 		for (i = 0; i < 3; i ++)
-			for (j = 0; i < 3; j ++) {
+			for (j = 0; j < 3; j ++) {
 				c += Math.abs(i - tabela[pecas[i][j]][0]);
 				c += Math.abs(j - tabela[pecas[i][j]][1]);
 			}
