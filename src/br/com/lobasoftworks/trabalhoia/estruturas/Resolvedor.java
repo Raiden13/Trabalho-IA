@@ -42,16 +42,8 @@ public class Resolvedor {
 		return nos;
 	}
 
-	public void setNos(int nos) {
-		this.nos = nos;
-	}
-
 	public int getProfundidade() {
 		return profundidade;
-	}
-
-	public void setProfundidade(int profundidade) {
-		this.profundidade = profundidade;
 	}
 
 	/**
