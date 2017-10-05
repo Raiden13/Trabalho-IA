@@ -12,7 +12,7 @@ import br.com.lobasoftworks.trabalhoia.puzzle.H2;
 import br.com.lobasoftworks.trabalhoia.puzzle.Heuristica;
 import br.com.lobasoftworks.trabalhoia.puzzle.Tabuleiro;
 
-public class TrabalhoIA {
+public class TesteQuebraCabeca {
 
 	public static void main(String[] args) {
 		int[][] pecas = {{5, 0, 2}, {6, 4, 7}, {8, 1, 3}};
