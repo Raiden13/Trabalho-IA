@@ -64,12 +64,15 @@ public class Resolvedor {
 			resultado = (Estado) ar[1];
 			
 			// Se o estado ainda nao foi gerado anteriormente, entao
-			if (!gerados.contains(resultado.getId()))
+			if (!gerados.contains(new Long(resultado.getId()))) {
 				// adicione ele a lista de sucessores
 				sucessores.add(new No(no, resultado, acao,
 						resultado.distancia(no.getEstado()) +
 						resultado.heuristica() + no.getDistancia(),
 						1 + no.getProfundidade()));
+				
+				gerados.add(resultado.getId());
+			}
 		}
 		
 		return sucessores;
@@ -108,6 +111,7 @@ public class Resolvedor {
 		List<No> borda = estrategia.criaLista(); // criando a borda
 		Collection<Long> gerados = new HashSet<>(); // estados gerados
 		No no;
+		long id;
 		
 		// Adiciona o no do estado inicial a borda
 		borda.add(new No(null, problema.getEstadoInicial(), null, 0, 0));
@@ -122,8 +126,9 @@ public class Resolvedor {
 			
 			// Remove o primeiro no da borda
 			no = borda.remove(0);
+			id = no.getEstado().getId();
 			// Diga que este estado ja foi gerado
-			gerados.add(no.getEstado().getId());
+			gerados.add(new Long(id));
 			nos ++;
 			profundidade = no.getProfundidade();
 			

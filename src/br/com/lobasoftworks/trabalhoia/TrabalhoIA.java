@@ -8,7 +8,7 @@ import br.com.lobasoftworks.trabalhoia.puzzle.Baixo;
 import br.com.lobasoftworks.trabalhoia.puzzle.Cima;
 import br.com.lobasoftworks.trabalhoia.puzzle.Direita;
 import br.com.lobasoftworks.trabalhoia.puzzle.Esquerda;
-import br.com.lobasoftworks.trabalhoia.puzzle.H1;
+//import br.com.lobasoftworks.trabalhoia.puzzle.H1;
 import br.com.lobasoftworks.trabalhoia.puzzle.H2;
 import br.com.lobasoftworks.trabalhoia.puzzle.Heuristica;
 import br.com.lobasoftworks.trabalhoia.puzzle.Tabuleiro;
