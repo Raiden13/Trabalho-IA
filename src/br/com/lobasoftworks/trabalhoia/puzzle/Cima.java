@@ -9,6 +9,11 @@ public class Cima extends Acao {
 		super("Cima");
 	}
 
+	/**
+	 * Executa a acao e altera o estado do ambiente.
+	 * @param estado estado atual do ambiente.
+	 * @return novo estado do ambiente.
+	 */
 	@Override
 	public Estado executa(Estado estado) {
 		// TODO Auto-generated method stub

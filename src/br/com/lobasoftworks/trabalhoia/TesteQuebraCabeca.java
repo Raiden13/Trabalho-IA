@@ -15,8 +15,8 @@ import br.com.lobasoftworks.trabalhoia.puzzle.Tabuleiro;
 public class TesteQuebraCabeca {
 
 	public static void main(String[] args) {
-		int[][] pecas = {{5, 0, 2}, {6, 4, 7}, {8, 1, 3}};
-		//int[][] pecas = {{5, 0, 2}, {6, 7, 4}, {8, 1, 3}};
+		//int[][] pecas = {{5, 0, 2}, {6, 4, 7}, {8, 1, 3}};
+		int[][] pecas = {{5, 0, 2}, {6, 7, 4}, {8, 1, 3}};
 		Heuristica h = new H2();
 		Tabuleiro t;
 		Problema p;

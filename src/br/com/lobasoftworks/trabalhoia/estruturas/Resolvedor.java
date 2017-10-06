@@ -70,7 +70,7 @@ public class Resolvedor {
 						resultado.distancia(no.getEstado()) +
 						resultado.heuristica() + no.getDistancia(),
 						1 + no.getProfundidade()));
-				
+				// informa que este estado ja foi gerado anteriormente
 				gerados.add(resultado.getId());
 			}
 		}

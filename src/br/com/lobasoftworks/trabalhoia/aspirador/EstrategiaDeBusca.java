@@ -8,6 +8,9 @@ import br.com.lobasoftworks.trabalhoia.estruturas.No;
 
 public abstract class EstrategiaDeBusca implements Estrategia {
 
+	/**
+	 * @return uma lista vazia para armazenar os nos
+	 */
 	@Override
 	public List<No> criaLista() {
 		// TODO Auto-generated method stub

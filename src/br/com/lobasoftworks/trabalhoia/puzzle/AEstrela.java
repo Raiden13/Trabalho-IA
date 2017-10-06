@@ -9,12 +9,20 @@ import br.com.lobasoftworks.trabalhoia.estruturas.No;
 
 public class AEstrela implements Estrategia {
 
+	/**
+	 * @return uma lista vazia para armazenar os nos
+	 */
 	@Override
 	public List<No> criaLista() {
 		// TODO Auto-generated method stub
 		return new ArrayList<No>();
 	}
 
+	/**
+	 * copia os nos de uma lista para outra
+	 * @param destino lista que vai receber os nos
+	 * @param origem lista de origem dos nos
+	 */
 	@Override
 	public void adiciona(List<No> destino, List<No> origem) {
 		// TODO Auto-generated method stub

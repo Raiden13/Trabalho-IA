@@ -88,6 +88,10 @@ public class Tabuleiro implements Estado {
 		return pecas;
 	}
 
+	/**
+	 * @return retorna um identificador unico que identifica
+	 * o estado no espaco de estados do problema.
+	 */
 	@Override
 	public long getId() {
 		// TODO Auto-generated method stub
@@ -102,18 +106,33 @@ public class Tabuleiro implements Estado {
 		return id;
 	}
 
+	/**
+	 * Calcula a distancia entre dois estados no espaco de estados
+	 * @param estado estado anterior ao estado atual
+	 * @return a distancia entre eles
+	 */
 	@Override
 	public double distancia(Estado estado) {
 		// TODO Auto-generated method stub
 		return 1;
 	}
 
+	/**
+	 * @return a distancia estimada do estado atual ate o estado
+	 * objetivo.
+	 */
 	@Override
 	public double heuristica() {
 		// TODO Auto-generated method stub
 		return heuristica.heuristica(pecas);
 	}
 
+	/**
+	 * Realiza um teste para verificar se o estado atual eh o estado
+	 * objetivo.
+	 * @return "true", caso seja o estado objetivo. "false", caso 
+	 * contrario.
+	 */
 	@Override
 	public boolean eObjetivo() {
 		// TODO Auto-generated method stub

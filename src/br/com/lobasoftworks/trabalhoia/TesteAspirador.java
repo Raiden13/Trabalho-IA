@@ -17,7 +17,7 @@ public class TesteAspirador {
 		Problema problema;
 		Resolvedor r;
 		
-		aspirador = new Aspirador(new Situacao[] {Situacao.LIMPO, Situacao.LIMPO}, 1);
+		aspirador = new Aspirador(new Situacao[] {Situacao.SUJO, Situacao.LIMPO}, 1);
 		problema = new Problema(aspirador);
 		
 		for (Acao a : new Acao[] {new Direita(), new Esquerda(), new Aspira()})

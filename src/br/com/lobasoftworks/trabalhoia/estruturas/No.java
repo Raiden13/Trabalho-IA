@@ -1,5 +1,15 @@
 package br.com.lobasoftworks.trabalhoia.estruturas;
 
+/**
+ * Abstracao de um no na arvore de busca. Este no contem os atributos de um no
+ * como descrito no livro de IA:
+ * -> noPai: no que gerou o no atual (null cao nao haja)
+ * -> estado: estado o qual este no representa
+ * -> acao: acao executada que gerou o no (null caso nao haja)
+ * -> distancia: distancia percorrida do estado inicial ate o estado atual
+ * -> profundidade: profundidade a qual o no pertence
+ * @author Luis
+ */
 public class No {
 	private No noPai;
 	private Estado estado;

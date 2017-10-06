@@ -3,6 +3,14 @@ package br.com.lobasoftworks.trabalhoia.estruturas;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstracao da estrutura de dados Problema. Nela, contem apenas a lista de acoes
+ * que o agente pode executar e o estado inicial. A funcao de custo de passo e
+ * teste objetivo estao como metodos das classes que implementam a interface
+ * estado.
+ * @author Luis
+ *
+ */
 public class Problema {
 	private List<Acao> acoes;
 	private Estado estadoInicial;
