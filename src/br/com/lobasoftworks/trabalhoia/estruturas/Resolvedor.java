@@ -10,6 +10,7 @@ public class Resolvedor {
 	private Problema problema;
 	private int nos;
 	private int profundidade;
+	private double custoCaminho;
 	
 	public Resolvedor() {
 		super();
@@ -46,6 +47,10 @@ public class Resolvedor {
 		return profundidade;
 	}
 
+	public double getCustoCaminho() {
+		return custoCaminho;
+	}
+
 	/**
 	 * Expande um no e retorna a lista de nos sucessores, ou seja, os
 	 * outros estados que podem ser alcancados a partir deste no.
@@ -68,7 +73,7 @@ public class Resolvedor {
 				// adicione ele a lista de sucessores
 				sucessores.add(new No(no, resultado, acao,
 						resultado.distancia(no.getEstado()) +
-						resultado.heuristica() + no.getDistancia(),
+						no.getDistancia(),
 						1 + no.getProfundidade()));
 				// informa que este estado ja foi gerado anteriormente
 				gerados.add(resultado.getId());
@@ -133,9 +138,12 @@ public class Resolvedor {
 			profundidade = no.getProfundidade();
 			
 			// Se o estado atual for o estado objetivo, entao
-			if (no.getEstado().eObjetivo())
+			if (no.getEstado().eObjetivo()) {
+				custoCaminho = no.getDistancia();
+				
 				// retorne a solucao do problema
 				return solucao(no);
+			}
 			
 			// Senao, expande o no e adiciona os seus sucessores a borda
 			estrategia.adiciona(borda, expande(no, gerados));
