@@ -66,7 +66,15 @@ public class Aspirador implements Estado {
 	@Override
 	public double heuristica() {
 		// TODO Auto-generated method stub
-		return 0;
+		int c, i;
+		
+		c = 0;
+		
+		for (i = 0; i < 2; i ++)
+			if (comodos[i] == Situacao.SUJO)
+				c++;
+		
+		return c;
 	}
 
 	/**

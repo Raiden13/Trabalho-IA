@@ -1,7 +1,6 @@
 package br.com.lobasoftworks.trabalhoia.estruturas;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -52,69 +51,13 @@ public class Resolvedor {
 	}
 
 	/**
-	 * Expande um no e retorna a lista de nos sucessores, ou seja, os
-	 * outros estados que podem ser alcancados a partir deste no.
-	 * @param no no do estado atual do ambiente
-	 * @param gerados lista dos estados gerados anteriormente
-	 * @return a lista de estados sucessores do estado do no atual
-	 */
-	private List<No> expande(No no, Collection<Long> gerados) {
-		List<No> sucessores = estrategia.criaLista();
-		Acao acao;
-		Estado resultado;
-		
-		// Para cada (acao, sucessor) em sucessor(estado) faca
-		for (Object[] ar : problema.sucessor(no.getEstado())) {
-			acao = (Acao) ar[0];
-			resultado = (Estado) ar[1];
-			
-			// Se o estado ainda nao foi gerado anteriormente, entao
-			if (!gerados.contains(new Long(resultado.getId()))) {
-				// adicione ele a lista de sucessores
-				sucessores.add(new No(no, resultado, acao,
-						resultado.distancia(no.getEstado()) +
-						no.getDistancia(),
-						1 + no.getProfundidade()));
-				// informa que este estado ja foi gerado anteriormente
-				gerados.add(resultado.getId());
-			}
-		}
-		
-		return sucessores;
-	}
-	
-	/**
-	 * @param no no folha da arvore de buscas
-	 * @return um vetor de strings contendo os passos para resolver
-	 * um determinado problema.
-	 */
-	private String[] solucao(No no) {
-		List<String> passos = new ArrayList<String>();
-		String[] s;
-		No noAtual = no;
-		int i;
-		
-		while (noAtual.getAcao() != null) {
-			passos.add(0, noAtual.getAcao().getNome());
-			noAtual = noAtual.getNoPai();
-		}
-		
-		s = new String[passos.size()];
-		
-		for (i = 0; i < s.length; i ++)
-			s[i] = passos.get(i);
-		
-		return s;
-	}
-	
-	/**
 	 * Resolve um problema pelo metodo da busca em arvore.
 	 * @return os passos para resolver o problema, caso haja
 	 * solucao.
 	 */
 	public String[] busca() {
 		List<No> borda = estrategia.criaLista(); // criando a borda
-		Collection<Long> gerados = new HashSet<>(); // estados gerados
+		HashSet<Long> gerados = new HashSet<>(); // estados gerados
 		No no;
 		long id;
 		
@@ -148,5 +91,65 @@ public class Resolvedor {
 			// Senao, expande o no e adiciona os seus sucessores a borda
 			estrategia.adiciona(borda, expande(no, gerados));
 		}
+	}
+	
+	/**
+	 * Expande um no e retorna a lista de nos sucessores, ou seja, os
+	 * outros estados que podem ser alcancados a partir deste no.
+	 * @param no no do estado atual do ambiente
+	 * @param gerados lista dos estados gerados anteriormente
+	 * @return a lista de estados sucessores do estado do no atual
+	 */
+	private List<No> expande(No no, HashSet<Long> gerados) {
+		List<No> sucessores = estrategia.criaLista();
+		Acao acao;
+		Estado resultado;
+		
+		// Para cada (acao, sucessor) em sucessor(estado) faca
+		for (Object[] ar : problema.sucessor(no.getEstado())) {
+			acao = (Acao) ar[0];
+			resultado = (Estado) ar[1];
+			
+			// Se o estado ainda nao foi gerado anteriormente, entao
+			if (!gerados.contains(new Long(resultado.getId()))) {
+				// adicione ele a lista de sucessores
+				sucessores.add(new No(no, resultado, acao,
+						resultado.distancia(no.getEstado()) +
+						no.getDistancia(),
+						1 + no.getProfundidade()));
+				// informa que este estado ja foi gerado anteriormente
+				gerados.add(resultado.getId()); // <-- depois ver se isto
+				// pode eliminar a solucao otima do problema
+			}
+		}
+		
+		return sucessores;
+	}
+	
+	/**
+	 * @param no no folha da arvore de buscas
+	 * @return um vetor de strings contendo os passos para resolver
+	 * um determinado problema.
+	 */
+	private String[] solucao(No no) {
+		List<String> passos = new ArrayList<String>();
+		String[] s;
+		No noAtual = no;
+		int i;
+		
+		while (noAtual.getAcao() != null) {
+			passos.add(0, noAtual.getAcao().getNome() + " g(n): " + noAtual.getDistancia() + 
+					" h(n): " + noAtual.getEstado().heuristica());
+			noAtual = noAtual.getNoPai();
+		}
+		
+		passos.add(0, "Estado inicial g(n): " + noAtual.getDistancia() + " h(n): " + noAtual.getEstado().heuristica());
+		
+		s = new String[passos.size()];
+		
+		for (i = 0; i < s.length; i ++)
+			s[i] = passos.get(i);
+		
+		return s;
 	}
 }
